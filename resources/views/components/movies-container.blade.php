@@ -4,7 +4,7 @@
             <h3 class="font-medium text-center">
                 {{ ucfirst($movie->name) }}
             </h3>
-            <img src="{{ $movie->img }}" alt="movie img">
+            <img src="{{ asset('/storage/' . $movie->img) }}" alt="movie img">
             <p class="text-sm">
                 {{ $movie->description }}
             </p>

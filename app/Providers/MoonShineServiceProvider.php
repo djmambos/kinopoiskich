@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use App\MoonShine\Resources\MovieResource;
 use Illuminate\Support\ServiceProvider;
-use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
+use MoonShine\MoonShine;
 use MoonShine\Resources\MoonShineUserResource;
 use MoonShine\Resources\MoonShineUserRoleResource;
 
@@ -23,8 +24,8 @@ class MoonShineServiceProvider extends ServiceProvider
                     ->icon('bookmark'),
             ])->translatable(),
 
-            MenuItem::make('Documentation', 'https://laravel.com')
-                ->badge(fn() => 'Check'),
+            MenuItem::make('Movies', new MovieResource())
+                ->icon('users'),
         ]);
     }
 }

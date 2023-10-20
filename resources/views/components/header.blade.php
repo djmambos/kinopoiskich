@@ -2,7 +2,9 @@
 <header class="h-16 bg-[#7c5daf] flex items-center justify-between">
     <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
     <div class="flex justify-between items-center ml-32">
-        <img src="logo.png" alt="" class="h-12">
+        <a href="{{ route('index') }}">
+            <img src="{{ asset('logo.png') }}" alt="" class="h-12">
+        </a>
         <h1 class="text-3xl text-white font-medium ml-5">Кинопоискич</h1>
     </div>
     <div class="auth text-base text-white font-medium mr-32">

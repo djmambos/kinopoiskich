@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainPageController::class, 'root'])->name('root');
+Route::get('/', [MovieController::class, 'index'])->name('index');
+
+Route::prefix('movies')->group(static function () {
+    Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
+    Route::get('/{id}', [MovieController::class, 'show'])->name('movies.show');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

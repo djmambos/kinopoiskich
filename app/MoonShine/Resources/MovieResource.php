@@ -5,6 +5,7 @@ namespace App\MoonShine\Resources;
 use App\Models\Movie;
 use Illuminate\Database\Eloquent\Model;
 use MoonShine\Actions\FiltersAction;
+use MoonShine\Fields\Date;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Text;
@@ -24,9 +25,12 @@ class MovieResource extends Resource
                 ->required(),
             Text::make('Описание', 'description')
                 ->required(),
+            Date::make('Дата релиза', 'release_time')
+                ->format('d.m.Y')
+                ->required(),
             Image::make('Изображение', 'img')
                 ->disk('public')
-                ->dir('movies')
+                ->dir('movies/' . request()->get('release_time'))
                 ->allowedExtensions(['jpg', 'jpeg', 'png'])
                 ->when(request()->routeIs('*.create'),
                     static fn(Image $field) => $field->required(),

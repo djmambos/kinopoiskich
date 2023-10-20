@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('description', 1000);
             $table->binary('img');
+            $table->date('release_time');
             $table->timestamps();
         });
     }
